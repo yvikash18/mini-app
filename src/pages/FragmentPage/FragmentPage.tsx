@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import  { FC, useEffect, useState } from 'react';
 import { useTonConnectUI, useTonWallet } from '@tonconnect/ui-react';
 import { Page } from '@/components/Page.tsx';
 import '@/pages/TONConnectPage/TONConnectPage.css';
@@ -12,7 +12,7 @@ export const FragmentPage: FC = () => {
   const [commission, setCommission] = useState('');
   const [telegramId, setTelegramId] = useState('');
   const [subscribed, setSubscribed] = useState(() => localStorage.getItem('isSubscribed') === 'true');
-
+  console.log(telegramId,wallet);
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const startAppParam = params.get('startapp');
@@ -42,18 +42,18 @@ export const FragmentPage: FC = () => {
     return isNaN(tonValue) ? '' : `$${(tonValue * usdRate).toFixed(2)}`;
   };
 
-  const handleSend = async () => {
-    if (!wallet) return;
-    await tonConnectUI.sendTransaction({
-      validUntil: Math.floor(Date.now() / 1000) + 600,
-      messages: [
-        {
-          address: 'EQCxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // Replace with receiver address
-          amount: (BigInt(dealPrice) * BigInt(1e9)).toString(), // TON to nanotons
-        },
-      ],
-    });
-  };
+  // const handleSend = async () => {
+  //   if (!wallet) return;
+  //   await tonConnectUI.sendTransaction({
+  //     validUntil: Math.floor(Date.now() / 1000) + 600,
+  //     messages: [
+  //       {
+  //         address: 'EQCxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // Replace with receiver address
+  //         amount: (BigInt(dealPrice) * BigInt(1e9)).toString(), // TON to nanotons
+  //       },
+  //     ],
+  //   });
+  // };
 
   return (
     <Page back>
