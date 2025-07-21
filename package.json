@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "homepage": "https://yvikash18.github.io/mini-app2",
+  "homepage": "https://yvikash18.github.io/mini-app",
   "scripts": {
     "deploy": "gh-pages -d dist",
     "dev": "vite",

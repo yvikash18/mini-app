@@ -22,6 +22,14 @@ export const IndexPage: FC = () => {
               TON Connect
             </Cell>
           </Link>
+          <Link to="/fragment">
+            <Cell
+              before={<div style={{ fontSize: '20px', padding: '8px', backgroundColor: '#0098EA', borderRadius: '8px' }}>🏷️</div>}
+              subtitle="Username auction marketplace"
+            >
+              Fragment Auction
+            </Cell>
+          </Link>
         </Section>
         <Section
           header="Application Launch Data"
