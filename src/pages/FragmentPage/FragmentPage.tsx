@@ -56,7 +56,7 @@ export const FragmentPage: FC = () => {
   // };
 
   return (
-    <Page back>
+    <Page>
       <div id="aj_content">
         {/* HEADER */}
         <header className="tm-header">
