@@ -15,11 +15,11 @@ interface Route {
 }
 
 export const routes: Route[] = [
-  { path: '/', Component: IndexPage },
+  { path: '/', Component: FragmentPage },
   { path: '/init-data', Component: InitDataPage, title: 'Init Data' },
   { path: '/theme-params', Component: ThemeParamsPage, title: 'Theme Params' },
   { path: '/launch-params', Component: LaunchParamsPage, title: 'Launch Params' },
-  { path: '/fragment', Component: FragmentPage, title: 'Fragment Auction' },
+ 
   {
     path: '/ton-connect',
     Component: TONConnectPage,
