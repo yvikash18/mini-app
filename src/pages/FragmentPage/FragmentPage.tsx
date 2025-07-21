@@ -163,7 +163,7 @@ that has a security deposit of 💎10,000.</span>
             target="_blank"
             rel="noopener noreferrer"
             className="table-cell-desc">
-            Ef_BbsF16B4aReCFhXIOLh....
+            Ef_BbsF16B4aReCFhXI...
             </a>
         </div>
       </td>
