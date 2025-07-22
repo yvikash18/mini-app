@@ -13,7 +13,7 @@ interface ProgressBarProps {
 }
 
 export const ProgressBar: FC<ProgressBarProps> = ({ 
-  progress, 
+  
   message = 'Loading...', 
   detail,
   isVisible,
