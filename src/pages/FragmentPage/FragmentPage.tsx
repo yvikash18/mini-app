@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { useTonWallet } from '@tonconnect/ui-react';
-import { Page } from '@/components/Page.tsx';
 import { Header } from '@/components/Header/Header';
 import { Footer } from '@/components/Footer/Footer';
 import { DealHeader } from '@/components/DealHeader/DealHeader';
