@@ -6,5 +6,15 @@ export const formatUSD = (ton: string): string => {
 };
 
 export const tonToNanotons = (amount: string): string => {
-  return (BigInt(amount) * BigInt(1e9)).toString();
+  // Convert TON to nanotons (multiply by 1e9)
+  console.log('tonToNanotons input:', amount);
+  const tonAmount = parseFloat(amount);
+  if (isNaN(tonAmount)) {
+    throw new Error(`Invalid TON amount: ${amount}`);
+  }
+  
+  // Convert to nanotons (multiply by 1e9) and ensure it's an integer
+  const nanotons = Math.floor(tonAmount * 1e9);
+  console.log('tonToNanotons output:', nanotons.toString());
+  return nanotons.toString();
 };

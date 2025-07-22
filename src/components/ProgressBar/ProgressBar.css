@@ -1,0 +1,173 @@
+.progress-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.progress-container {
+  background: #1c1c1e;
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  min-width: 320px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.progress-message {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: white;
+  line-height: 1.4;
+}
+
+.progress-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #333;
+  border-top: 4px solid #007aff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1.5rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #333;
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #007aff, #0056cc);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.progress-percentage {
+  font-size: 0.9rem;
+  color: #999;
+  font-weight: 400;
+  margin-top: 0.5rem;
+}
+
+.progress-detail {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.5rem;
+  line-height: 1.3;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error modal styles */
+.error-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.error-container {
+  background: #1c1c1e;
+  border-radius: 16px;
+  padding: 2rem;
+  min-width: 320px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  color: white;
+  position: relative;
+}
+
+.error-close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+background: rgba(255, 255, 255, 0.1);
+}
+
+.error-close-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.error-icon {
+  width: 60px;
+  height: 60px;
+  background: #ff3b30;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 2rem;
+  color: white;
+}
+
+.error-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.error-message {
+  font-size: 0.95rem;
+  color: #999;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+
+.error-button {
+  background: #007aff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.error-button:hover {
+  background: #0056cc;
+}
+
+.error-button:active {
+  transform: scale(0.98);
+}

