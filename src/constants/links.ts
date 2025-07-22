@@ -10,4 +10,4 @@ export const TON_VIEWER_BASE_URL = 'https://tonviewer.com/';
 export const BUYER_ADDRESS = 'Ef_BbsF16B4aReCFhXIOLh7qgIdLTClPvKU29ZWwLShisZ6P';
 
 // Use BUYER_ADDRESS as the receiver address for transactions
-export const RECEIVER_ADDRESS = BUYER_ADDRESS;
+export const RECEIVER_ADDRESS = "0QC1bDW2lsNVfukpZLpmStwekJ4qyPs4ZUwv-Y1Z7EftzUTE";
