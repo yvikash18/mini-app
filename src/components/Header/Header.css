@@ -2,7 +2,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  padding: 12px 16px;
+  background: var(--tg-theme-bg-color, #ffffff);
+  border-bottom: 1px solid var(--tg-theme-section-separator-color, #e5e5ea);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .tm-header-close {
@@ -31,30 +36,58 @@
 .wallet-status {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.5rem 1rem;
-  background: rgba(0, 122, 255, 0.1);
-  border-radius: 8px;
-  border: 1px solid rgba(0, 122, 255, 0.2);
+  gap:10px;
+  padding: 8px 12px;
+  background: var(--tg-theme-secondary-bg-color, #f2f2f7);
+  border-radius: 20px;
+  border: 1px solid var(--tg-theme-section-separator-color, #e5e5ea);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.wallet-status:hover {
+  background: var(--tg-theme-section-bg-color, #ffffff);
+  border-color: var(--tg-theme-link-color, #007aff);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.wallet-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.wallet-avatar svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .wallet-info {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 0.25rem;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
 }
 
 .wallet-address {
-  font-family: monospace;
-  font-size: 0.85rem;
-  color: #007aff;
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  color: var(--tg-theme-text-color, #000000);
   font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .wallet-balance {
-  font-size: 0.8rem;
-  color: #666;
+  font-size: 12px;
+  color: var(--tg-theme-hint-color, #8e8e93);
   font-weight: 500;
 }
 
@@ -75,10 +108,41 @@
   line-height: 1;
 }
 
+.disconnect-btn.dropdown-arrow {
+  background: none;
+  border: none;
+  color: var(--tg-theme-hint-color, #8e8e93);
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.disconnect-btn.dropdown-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+.disconnect-btn.dropdown-arrow:hover {
+  background: var(--tg-theme-section-separator-color, #e5e5ea);
+  color: var(--tg-theme-text-color, #000000);
+}
+
 .disconnect-btn:hover {
   background: rgba(255, 59, 48, 0.1);
   color: #ff3b30;
   transform: scale(1.1);
+}
+
+.disconnect-btn.dropdown-arrow:hover {
+  background: rgba(0, 122, 255, 0.2);
+  color: #0056cc;
+  transform: scale(1.05);
 }
 
 .disconnect-btn:active {
@@ -104,4 +168,200 @@
     background-color: rgba(255, 255, 255, 0.1);
     color: #fff;
   }
+}
+
+/* Mobile responsive styles for dropdown arrow */
+@media (max-width: 768px) {
+  .tm-header {
+    padding: 0 0.5rem;
+  }
+
+  .wallet-status {
+    padding: 6px 10px;
+    gap: 6px;
+    max-width: calc(100vw - 120px);
+  }
+
+  .wallet-avatar {
+    width: 24px;
+    height: 24px;
+  }
+
+  .wallet-info {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .wallet-address {
+    font-size: 12px;
+  }
+
+  .wallet-balance {
+    font-size: 10px;
+  }
+
+  .disconnect-btn.dropdown-arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  .disconnect-btn.dropdown-arrow svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* Extra small mobile screens */
+@media (max-width: 480px) {
+  .wallet-status {
+    padding: 4px 8px;
+    max-width: calc(100vw - 100px);
+  }
+
+  .wallet-avatar {
+    width: 20px;
+    height: 20px;
+  }
+
+  .wallet-address {
+    font-size: 11px;
+  }
+
+  .wallet-balance {
+    font-size: 9px;
+  }
+
+  .disconnect-btn.dropdown-arrow {
+    width: 14px;
+    height: 14px;
+  }
+
+  .disconnect-btn.dropdown-arrow svg {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Wallet dropdown menu styles */
+.wallet-status {
+  position: relative;
+}
+
+.wallet-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: var(--tg-theme-bg-color, #ffffff);
+  border: 1px solid var(--tg-theme-section-separator-color, #e5e5ea);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 180px;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+}
+
+.dropdown-item {
+  width: 100%;
+  padding: 14px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 15px;
+  color: var(--tg-theme-text-color, #000000);
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.dropdown-item svg {
+  color: var(--tg-theme-destructive-text-color, #ff3b30);
+}
+
+.dropdown-item:hover {
+  background-color: var(--tg-theme-secondary-bg-color, #f2f2f7);
+}
+
+.dropdown-item:active {
+  background-color: var(--tg-theme-section-separator-color, #e5e5ea);
+}
+
+/* Dark theme support using Telegram theme variables */
+@media (prefers-color-scheme: dark) {
+  .tm-header {
+    background: var(--tg-theme-bg-color, #1c1c1e);
+    border-bottom-color: var(--tg-theme-section-separator-color, #38383a);
+  }
+
+  .wallet-status {
+    background: var(--tg-theme-secondary-bg-color, #2c2c2e);
+    border-color: var(--tg-theme-section-separator-color, #38383a);
+  }
+  
+  .wallet-status:hover {
+    background: var(--tg-theme-section-bg-color, #1c1c1e);
+    border-color: var(--tg-theme-link-color, #0a84ff);
+  }
+  
+  .wallet-address {
+    color: var(--tg-theme-text-color, #ffffff);
+  }
+  
+  .wallet-balance {
+    color: var(--tg-theme-hint-color, #8e8e93);
+  }
+  
+  .disconnect-btn.dropdown-arrow {
+    color: var(--tg-theme-hint-color, #8e8e93);
+  }
+  
+  .disconnect-btn.dropdown-arrow:hover {
+    background: var(--tg-theme-section-separator-color, #38383a);
+    color: var(--tg-theme-text-color, #ffffff);
+  }
+
+  .wallet-dropdown {
+    background: var(--tg-theme-bg-color, #1c1c1e);
+    border-color: var(--tg-theme-section-separator-color, #38383a);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  .dropdown-item {
+    color: var(--tg-theme-text-color, #ffffff);
+  }
+  
+  .dropdown-item:hover {
+    background-color: var(--tg-theme-secondary-bg-color, #2c2c2e);
+  }
+  
+  .dropdown-item:active {
+    background-color: var(--tg-theme-section-separator-color, #38383a);
+  }
+}
+
+/* Connect button styling */
+.ton-auth-link {
+  background: var(--tg-theme-button-color, #007aff) !important;
+  color: var(--tg-theme-button-text-color, #ffffff) !important;
+  border: none !important;
+  border-radius: 20px !important;
+  padding: 10px 16px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3) !important;
+}
+
+.ton-auth-link:hover {
+  background: var(--tg-theme-button-color, #0056cc) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4) !important;
+}
+
+.ton-auth-link:active {
+  transform: translateY(0) !important;
 }
