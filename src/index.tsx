@@ -6,7 +6,6 @@ import { StrictMode } from 'react';
 import { retrieveLaunchParams } from '@telegram-apps/sdk-react';
 
 import { Root } from '@/components/Root.tsx';
-import { EnvUnsupported } from '@/components/EnvUnsupported.tsx';
 import { init } from '@/init.ts';
 
 import './index.css';
@@ -36,5 +35,11 @@ try {
       );
     });
 } catch (e) {
-  root.render(<EnvUnsupported/>);
+  root.render(
+    <div style={{ padding: '20px', textAlign: 'center' }}>
+      <h1>Environment Not Supported</h1>
+      <p>This application requires Telegram Web App environment.</p>
+      <p>Error: {String(e)}</p>
+    </div>
+  );
 }

@@ -12,7 +12,6 @@ import { KYCInfo } from '@/components/KYCInfo/KYCInfo';
 import { TradeInfoTable } from '@/components/TradeInfoTable/TradeInfoTable';
 import { useUrlParams } from '@/hooks/useUrlParams';
 import { useSubscription } from '@/hooks/useSubscription';
-import '@/pages/TONConnectPage/TONConnectPage.css';
 import './FragmentPage.css';
 
 export const FragmentPage: FC = () => {

@@ -1,7 +1,7 @@
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 
 import { App } from '@/components/App.tsx';
-import { ErrorBoundary } from '@/components/ErrorBoundary.tsx';
+import { ErrorBoundary } from '@/components/ErrorBoundary/ErrorBoundary';
 import { publicUrl } from '@/helpers/publicUrl.ts';
 
 function ErrorBoundaryError({ error }: { error: unknown }) {
@@ -22,10 +22,17 @@ function ErrorBoundaryError({ error }: { error: unknown }) {
 }
 
 export function Root() {
+  // Use root-level manifest URL for better TON Connect compatibility
+  const manifestUrl = import.meta.env.DEV 
+    ? '/tonconnect-manifest.json'
+    : publicUrl('tonconnect-manifest.json');
+
+  console.log('TON Connect manifest URL:', manifestUrl);
+
   return (
-    <ErrorBoundary fallback={ErrorBoundaryError}>
+    <ErrorBoundary fallback={<ErrorBoundaryError error={new Error('Unknown error')} />}>
       <TonConnectUIProvider
-        manifestUrl={publicUrl('tonconnect-manifest.json')}
+        manifestUrl={manifestUrl}
       >
         <App/>
       </TonConnectUIProvider>
