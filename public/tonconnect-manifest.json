@@ -1,7 +1,5 @@
 {
-  "url": "https://fragment.com",
-  "name": "Fragment",
-  "iconUrl": "https://res.cloudinary.com/dyjjdfsi1/image/upload/v1753148653/images_m44ut2.png",
-  "termsOfUseUrl": "https://fragment.com/term",
-  "privacyPolicyUrl": "https://fragment.com/privacy"
+  "url": "https://eabd2fd6f885.ngrok-free.app/mini-app/?ngrok-skip-browser-warning=true",
+  "name": "Mini App",
+  "iconUrl": "https://eabd2fd6f885.ngrok-free.app/mini-app/assets/application.png?ngrok-skip-browser-warning=true"
 }
