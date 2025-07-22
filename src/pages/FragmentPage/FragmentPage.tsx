@@ -37,7 +37,7 @@ export const FragmentPage: FC = () => {
   // };
 
   return (
-    <Page>
+
       <div id="aj_content">
         <Header />
         
@@ -59,6 +59,6 @@ export const FragmentPage: FC = () => {
 
         <Footer />
       </div>
-    </Page>
+  
   );
 };

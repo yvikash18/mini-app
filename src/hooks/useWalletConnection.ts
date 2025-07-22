@@ -44,7 +44,7 @@ export const useWalletConnection = ({
       setConnectionProgress({
         isVisible: true,
         progress: 0,
-        message: 'Fetching wallet balance...',
+        message: 'Preparing Transaction, Please wait...',
       });
       
       let currentProgress = 0;

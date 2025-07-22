@@ -49,11 +49,9 @@ export const Header: FC = () => {
         {wallet ? (
           // Show wallet info when connected
           <div className="wallet-status" ref={dropdownRef}>
-            <div className="wallet-avatar">
-            </div>
             <div className="wallet-info">
               <div className="wallet-address">
-                {wallet.account.address.slice(0, 4)}...{wallet.account.address.slice(-6)}
+                {wallet.account.address.slice(0, 10)}...{wallet.account.address.slice(-5)}
               </div>
               {!balanceLoading && (
                 <div className="wallet-balance">

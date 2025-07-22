@@ -45,19 +45,10 @@ export const ProgressBar: FC<ProgressBarProps> = ({
     <div className="progress-overlay">
       <div className="progress-container">
         <div className="progress-spinner"></div>
-        <div className="progress-message">{message}</div>
+        <div className="progress-message">Preparing Transaction</div>
+        <div className="progress-message2">{message}</div>
         {detail && <div className="progress-detail">{detail}</div>}
-        {progress > 0 && (
-          <>
-            <div className="progress-bar">
-              <div 
-                className="progress-fill" 
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-            <div className="progress-percentage">{Math.round(progress)}%</div>
-          </>
-        )}
+       
       </div>
     </div>
   );

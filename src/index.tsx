@@ -14,7 +14,8 @@ import './index.css';
 import './mockEnv.ts';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
-
+const { initDataRaw, initData } = retrieveLaunchParams();
+console.log(initData,initDataRaw)
 try {
   const launchParams = retrieveLaunchParams();
   const { tgWebAppPlatform: platform } = launchParams;

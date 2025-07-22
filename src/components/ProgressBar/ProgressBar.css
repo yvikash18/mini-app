@@ -29,12 +29,17 @@
   color: white;
   line-height: 1.4;
 }
-
+.progress-message2 {
+  font-size: 0.75rem;
+  margin-bottom: 2rem;
+  color: white;
+  line-height: 1.4;
+}
 .progress-spinner {
   width: 60px;
   height: 60px;
   border: 4px solid #333;
-  border-top: 4px solid #007aff;
+  border-top: 4px solid #43494f;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 1.5rem;
@@ -51,7 +56,7 @@
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #007aff, #0056cc);
+  background: linear-gradient(90deg, #43494f, #4f545a);
   border-radius: 2px;
   transition: width 0.3s ease;
 }
@@ -126,16 +131,15 @@ background: rgba(255, 255, 255, 0.1);
 }
 
 .error-icon {
-  width: 60px;
-  height: 60px;
-  background: #ff3b30;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1rem;
   font-size: 2rem;
-  color: white;
+  color: #ff3b30;
 }
 
 .error-title {
@@ -146,7 +150,7 @@ background: rgba(255, 255, 255, 0.1);
 }
 
 .error-message {
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   color: #999;
   line-height: 1.4;
   margin-bottom: 2rem;
