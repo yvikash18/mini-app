@@ -1,0 +1,89 @@
+/* KYC Info Component Styles */
+.kyc-info-container {
+  width: 100%;
+}
+
+.kyc-info-button {
+  background: linear-gradient(135deg, #007aff 0%, #0056cc 100%);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  padding: 16px 20px;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+  transition: all 0.3s ease;
+  cursor: default;
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+  height: auto !important;
+}
+
+.kyc-info-button:hover {
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.kyc-info-text {
+  display: block;
+  margin: 0;
+}
+
+/* Tablet Styles (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .kyc-info-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .kyc-info-button {
+    font-size: 15px;
+    padding: 18px 24px;
+    border-radius: 14px;
+  }
+}
+
+/* Large Screen Styles (1025px and up) */
+@media (min-width: 1025px) {
+  .kyc-info-container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .kyc-info-button {
+    font-size: 16px;
+    padding: 20px 28px;
+    border-radius: 16px;
+    box-shadow: 0 3px 12px rgba(0, 122, 255, 0.25);
+  }
+  
+  .kyc-info-button:hover {
+    box-shadow: 0 6px 20px rgba(0, 122, 255, 0.35);
+    transform: translateY(-2px);
+  }
+}
+
+/* Extra Large Screen Styles (1440px and up) */
+@media (min-width: 1440px) {
+  .kyc-info-container {
+    max-width: 800px;
+  }
+  
+  .kyc-info-button {
+    font-size: 17px;
+    padding: 22px 32px;
+    border-radius: 18px;
+  }
+}
+
+/* Mobile-first approach - ensure it looks good on small screens */
+@media (max-width: 480px) {
+  .kyc-info-button {
+    font-size: 13px;
+    padding: 14px 16px;
+    line-height: 1.3;
+  }
+}

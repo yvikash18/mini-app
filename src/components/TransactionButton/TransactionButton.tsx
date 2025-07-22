@@ -30,6 +30,14 @@ export const TransactionButton: FC<TransactionButtonProps> = ({
   return (
     <button 
       className="btn btn-primary" 
+      style={{
+    width: '394px',
+    height: '42px',
+    padding: 0, // Optional: ensures no internal padding interferes
+    fontSize: '1rem',
+    lineHeight: '42px', // Optional: vertically centers text if no padding
+    textAlign: 'center'
+  }}
       onClick={onClick}
       disabled={isDisabled}
     >

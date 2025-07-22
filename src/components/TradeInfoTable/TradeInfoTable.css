@@ -1,0 +1,31 @@
+/* Trade Info Table Styles */
+.trade-info-table {
+  width: 100%;
+}
+
+.trade-info-table .table-cell-value {
+  text-align: center;
+  font-weight: 500;
+}
+
+.trade-info-table .table-cell-desc {
+  text-align: center;
+}
+
+.trade-info-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.trade-info-table th {
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .trade-info-table .table-cell-value,
+  .trade-info-table .table-cell-desc {
+    font-size: 14px;
+  }
+}

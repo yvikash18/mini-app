@@ -1,12 +1,13 @@
 import { FC } from 'react';
 import { TON_VIEWER_BASE_URL, BUYER_ADDRESS } from '@/constants/links';
+import './TradeInfoTable.css';
 
 export const TradeInfoTable: FC = () => {
   return (
     <>
       <h4>Trade Info</h4>
       <div className="tm-section-box tm-section-bid-info">
-        <table className="table tm-table tm-table-fixed">
+        <table className="table tm-table tm-table-fixed trade-info-table">
           <thead>
             <tr>
               <th>Deal Status</th>
@@ -17,7 +18,7 @@ export const TradeInfoTable: FC = () => {
           <tbody>
             <tr>
               <td>
-                <div className="table-cell-value tm-value">Deal in Progress</div>
+                <div className="table-cell-value">Deal in Progress</div>
               </td>
               <td>
                 <div className="table-cell-desc">Swappable</div>

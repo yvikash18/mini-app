@@ -32,7 +32,7 @@ export const ProgressBar: FC<ProgressBarProps> = ({
           <div className="error-icon">
             <FontAwesomeIcon icon={faTriangleExclamation} />
           </div>
-          <div className="error-title">Connection Declined</div>
+          <div className="error-title">Transaction Declined</div>
           <div className="error-message">
             {message}
           </div>
