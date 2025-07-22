@@ -32,6 +32,12 @@ export default defineConfig({
   server: {
     // Exposes your dev server and makes it accessible for the devices in the same network.
     host: true,
+    allowedHosts: [
+      'eabd2fd6f885.ngrok-free.app'
+    ],
+    headers: {
+      'ngrok-skip-browser-warning': 'true'
+    },
   },
 });
 
