@@ -32,11 +32,6 @@ export const Header: FC = () => {
               <div className="wallet-address">
                 {wallet.account.address.slice(0, 6)}...
               </div>
-              {!balanceLoading && (
-                <div className="wallet-balance">
-                  {balance} TON
-                </div>
-              )}
             </div>
             <button 
               className="disconnect-btn" 
